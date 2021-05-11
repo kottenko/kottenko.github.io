@@ -1,0 +1,39 @@
+//= parts/head.html
+<div class="global-wrapper">
+    //= parts/header.html
+    <div class="main">
+        <div class="mbox">
+            <ul>
+                <li><a href="main.html">main</a></li>
+                <li><a href="catalog.html">catalog</a></li>
+                <li><a href="product.html">product</a></li>
+                <li><a href="contacts.html">contacts</a></li>
+            </ul>
+            <br>
+            <hr>
+            <div class="title">
+                <h2>содержимое спрайта</h2>
+            </div>
+            <div class="svg-container"></div>
+        </div>
+    </div>
+    //= parts/footer.html
+    //= parts/footer-links.html
+    <style>
+        .svg-container{display: flex;justify-content: space-between; align-items: flex-start; flex-wrap: wrap;border: 1px solid #0f0f11;}
+        .svg-container div{width: 200px; padding: 10px; border: 1px solid #0f0f11; flex-grow: 1;}
+        .svg-container svg{width: 100%;}
+    </style>
+    <script>
+        $(document).ready(function(){
+            $('body>svg symbol').each(function(){
+                var id = $(this).attr('id');
+                var div = document.createElement('div');
+                $(div).html('<svg><use xlink:href="#'+id+'"></use></svg><p>#'+id+'</p>');
+                $('.svg-container').append(div);
+            });
+        });
+    </script>
+</div>
+</body>
+</html>
